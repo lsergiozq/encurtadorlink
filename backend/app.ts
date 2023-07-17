@@ -63,7 +63,7 @@ app.post('/encurtar', (req: Request, res: Response) => {
   const urlEncurtada = `https://ow.app/${stringReduzida}`;
 
   // Salvar a URL no banco de dados
-  const query = `INSERT INTO links (url_original, url_encurtada, data_validade) VALUES (?, ?, ?)`;
+  const query = `INSERT INTO links (OriginalUrl, ShortUrl, ExpirationDate) VALUES (?, ?, ?)`;
   connection.query(query, [urlOriginal, stringReduzida, dataValidade], (error) => {
     if (error) {
       console.error('Erro ao salvar o link no banco de dados:', error);
@@ -80,7 +80,7 @@ app.get('/:stringReduzida', (req: Request, res: Response) => {
   const { stringReduzida } = req.params;
 
   // Buscar a URL original no banco de dados
-  const query = `SELECT url_original FROM links WHERE url_encurtada = ?`;
+  const query = `SELECT OriginalUrl FROM links WHERE ShortUrl = ?`;
   connection.query(query, [stringReduzida], (error, results) => {
     if (error) {
       console.error('Erro ao buscar a URL original no banco de dados:', error);
