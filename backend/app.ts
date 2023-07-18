@@ -14,12 +14,6 @@ const bdPwd: string = process.env.DB_PASSWORD || '';
 const bdName: string = process.env.DB_DATABASE || '';
 const bdPort: number = parseInt(process.env.DB_PORT || '3306', 10);
 
-console.log(bdHost);
-console.log(bdUser);
-console.log(bdPwd);
-console.log(bdName);
-console.log(bdPort);
-
 //Configuração do banco de dados
 const connection = mysql.createConnection({
   host: bdHost,
