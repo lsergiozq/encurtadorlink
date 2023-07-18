@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
   const urlOriginalInput = document.getElementById('urlOriginal');
-  const dataValidadeInput = document.getElementById('dataValidade');
   const encurtarBtn = document.getElementById('encurtarBtn');
   const urlEncurtadaOutput = document.getElementById('urlEncurtada');
 
@@ -12,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.execCommand('copy');
       window.getSelection().removeAllRanges();
       alert('URL encurtada copiada para a área de transferência!');
+      urlOriginalInput.value = ''; 
   });
   
   encurtarBtn.addEventListener('click', () => {
