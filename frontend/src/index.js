@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   urlEncurtadaOutput.addEventListener('click', function() {
       var range = document.createRange();
-      range.selectNode(urlEncurtadaElement);
+      range.selectNode(urlEncurtadaOutput);
       window.getSelection().removeAllRanges();
       window.getSelection().addRange(range);
       document.execCommand('copy');
