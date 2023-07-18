@@ -23,14 +23,27 @@ const connection = mysql.createConnection({
   database: bdName,
 });
 
-
-
 // Configuração do CORS
-app.use(
-  cors({
+var whitelist = ['',''];
+
+if (process.env.FRONTEND_URL !== ""){
+  whitelist = process.env.FRONTEND_URL.split(',');
+
+  var corsOptions = {
     credentials: true,
-    origin: process.env.FRONTEND_URL
-  })
+    origin: function (origin, callback) {
+      if (whitelist?.indexOf(origin) !== -1 || origin === undefined) {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS - ' + origin))
+      }
+    }
+  }
+}
+
+
+app.use(
+  cors(corsOptions)
 );
 
 connection.connect((error) => {
