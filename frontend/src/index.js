@@ -4,6 +4,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const encurtarBtn = document.getElementById('encurtarBtn');
   const urlEncurtadaOutput = document.getElementById('urlEncurtada');
 
+  urlEncurtadaOutput.addEventListener('click', function() {
+      var range = document.createRange();
+      range.selectNode(urlEncurtadaElement);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand('copy');
+      window.getSelection().removeAllRanges();
+      alert('URL encurtada copiada para a área de transferência!');
+  });
+  
   encurtarBtn.addEventListener('click', () => {
     const urlOriginal = urlOriginalInput.value;
 
