@@ -60,7 +60,7 @@ app.post('/encurtar', (req: Request, res: Response) => {
   const stringReduzida = generateRandomString(8);
   
   // Construir a URL encurtada
-  const urlEncurtada = `https://ow.app/${stringReduzida}`;
+  const urlEncurtada = `https://ow.app.br/${stringReduzida}`;
 
   // Salvar a URL no banco de dados
   const query = `INSERT INTO links (OriginalUrl, ShortUrl, ExpirationDate) VALUES (?, ?, ?)`;

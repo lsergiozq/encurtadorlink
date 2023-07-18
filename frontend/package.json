@@ -4,7 +4,8 @@
   "description": "Frontend para encurtador de links",
   "main": "index.html",
   "scripts": {
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "build": "react-scripts build"
   },
   "dependencies": {
     "@types/node": "^14.11.8",
