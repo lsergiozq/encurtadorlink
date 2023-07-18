@@ -62,6 +62,16 @@ app.post('/encurtar', (req: Request, res: Response) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
+  
+  // Array de domínios permitidos
+  const allowedDomains = ['https://app.owcloud.com.br', 'https://teams.microsoft.com'];
+
+  // Verificar se a urlOriginal está em um dos domínios permitidos
+  const isAllowedDomain = allowedDomains.some(domain => urlOriginal.startsWith(domain));
+  if (!isAllowedDomain) {
+    res.status(400).json({ error: 'URL não permitida' });
+    return;
+  }
 
   // Gerar string reduzida de 8 caracteres aleatórios
   const stringReduzida = generateRandomString(8);
@@ -100,7 +110,7 @@ app.get('/:stringReduzida', (req: Request, res: Response) => {
       return;
     }
 
-    const { url_original: urlOriginal } = results[0];
+    const { OriginalUrl: urlOriginal } = results[0];
     res.redirect(urlOriginal);
   });
 });
