@@ -64,7 +64,7 @@ app.post('/encurtar', (req: Request, res: Response) => {
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   
   // Array de domínios permitidos
-  const allowedDomains = ['https://app.owcloud.com.br', 'https://teams.microsoft.com'];
+  const allowedDomains = ['https://app.owcloud.com.br', 'https://teams.microsoft.com', 'https://debug.owcloud.com.br', 'http://srv01', 'https://ownet.tawk.help', 'https://teams.live.com', 'https://www.odontoway.com', 'https://api.whatsapp.com'];
 
   // Verificar se a urlOriginal está em um dos domínios permitidos
   const isAllowedDomain = allowedDomains.some(domain => urlOriginal.startsWith(domain));
